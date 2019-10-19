@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
+//test
     /*** Scan button tapped, switch to scan page***/
 
     private void clickScan(){
