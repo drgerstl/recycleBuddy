@@ -1,14 +1,9 @@
 package com.example.recyclebuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,21 +52,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /*** Scan button tapped ***/
+    /*** Scan button tapped, switch to scan page***/
 
     private void clickScan(){
-
+        setContentView(R.layout.scan_page);
     }
 
-    /*** Info button tapped ***/
+    /*** Info button tapped, switch to info page ***/
 
     private void clickInfo(){
-
+        setContentView(R.layout.information_page);
     }
 
-    /*** Search button tapped ***/
+    /*** Search button tapped, switch to search page ***/
 
     private void clickSearch(){
-
+        setContentView(R.layout.seach_page);
     }
 }
