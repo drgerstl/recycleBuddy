@@ -192,26 +192,31 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void lookUpByScan(String upcCode) {
-        String output = "Item is ";
+        String output = "";
         for (int i = 0; i < items.size(); i++) {
             if (upcCode.equals(items.get(i).UPC)) {
+                output = items.get(i).itemID;
 
                 System.out.println(upcCode);
                 //upc is found and matched to type
                 if (items.get(i).isRecyclable == 0) {
-                    output += "not recyclable.";
+                    output += " is not recyclable.";
+                    break;
                 }
                 else if (items.get(i).isRecyclable == 1) {
-                    output += "recyclable at home.";
+                    output += " is recyclable at home.";
+                    break;
                 }
 
                 else if (items.get(i).isRecyclable == 2) {
-                    output += "recyclable at appropriate locations.";
+                    output += " is recyclable at appropriate locations.";
+                    break;
                 }
 
                 else {
                     output += "NOT FOUND";
                 }
+
             }
         }
         txtUpcOutput.setText(output);
