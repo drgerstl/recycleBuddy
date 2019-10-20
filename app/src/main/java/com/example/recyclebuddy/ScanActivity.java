@@ -195,26 +195,27 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         String output = "Item is ";
         for (int i = 0; i < items.size(); i++) {
             if (upcCode.equals(items.get(i).UPC)) {
-                //upc is found and matched to type
-                switch (items.get(i).isRecyclable){
-                    case 0:
-                        output += "not recyclable.";
-                        break;
-                    case 1:
-                        output += "recyclable at home.";
-                        break;
-                    case 2:
-                        output += "recyclable at appropriate locations.";
-                        break;
-                        default:
-                            output += "NOT FOUND";
-                            break;
 
+                System.out.println(upcCode);
+                //upc is found and matched to type
+                if (items.get(i).isRecyclable == 0) {
+                    output += "not recyclable.";
                 }
+                else if (items.get(i).isRecyclable == 1) {
+                    output += "recyclable at home.";
+                }
+
+                else if (items.get(i).isRecyclable == 2) {
+                    output += "recyclable at appropriate locations.";
+                }
+
+                else {
+                    output += "NOT FOUND";
                 }
             }
-        txtUpcOutput.setText(output);
         }
+        txtUpcOutput.setText(output);
+    }
 
 
     public void cramTime(){
