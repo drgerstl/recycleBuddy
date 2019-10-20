@@ -18,13 +18,6 @@ public class RecycleItems {
 
 // https://abhiandroid.com/programming/json
     protected void readFile() {
-        try {
-            String in = "items.json";
-            JSONObject obj = new JSONObject(in);
-            JSONArray itemArray  = obj.getJSONArray("items");
-            itemID = sys.getString("itemID");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
     }
 }

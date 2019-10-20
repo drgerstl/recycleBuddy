@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileNotFoundException;
@@ -17,12 +18,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.io.InputStream;
+
+import java.util.Arrays;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
@@ -50,16 +54,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         /*** Get IDs ***/
 
-        btnHome        = findViewById(R.id.btnHomeSearch);
-        txtSearch      = findViewById(R.id.txtSearch);
-        radioGroup     = findViewById(R.id.radioGroup);
-        radUPC         = findViewById(R.id.radUPC);
+        btnHome = findViewById(R.id.btnHomeSearch);
+        txtSearch = findViewById(R.id.txtSearch);
+        radioGroup = findViewById(R.id.radioGroup);
+        radUPC = findViewById(R.id.radUPC);
         radProductType = findViewById(R.id.radProductType);
 
         /*** Add Listeners ***/
 
-           btnHome.setOnClickListener(this);
-         txtSearch.setOnClickListener(this);
+        btnHome.setOnClickListener(this);
+        txtSearch.setOnClickListener(this);
         radioGroup.setOnCheckedChangeListener(this);
 
         /*** Lock orientation to portrait ***/
@@ -70,8 +74,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         getSupportActionBar().setTitle("Recycle Buddy - Product Search");
 
-        setupLocation();
-        setupItems();
+        setupLocationArray();
+        setupItemsArray();
     }
 
     /*** Listener methods ***/
@@ -91,64 +95,146 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (checkedId == radUPC.getId()){
+        if (checkedId == radUPC.getId()) {
             setText("Enter UPC");
-        }
-        else if (checkedId == radProductType.getId()){
+        } else if (checkedId == radProductType.getId()) {
             setText("Enter product");
         }
     }
 
-    private void clickHome(){
+    private void clickHome() {
         Intent intent = new Intent(SearchActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
-    private void clearText(){
+    private void clearText() {
         txtSearch.setText("");
     }
 
-    private void setText(String text){
+    private void setText(String text) {
         txtSearch.setText(text);
     }
 
-    private void setupLocation() {
-        JSONParser jsonParser = new JSONParser();
-        try (FileReader readerLocations = new FileReader("locations.json")) {
-            // Read JSON file
-            Object obj = jsonParser.parse(readerLocations);
+    private void setupLocationArray() {
+        try {
+            // get JSONObject from JSON file
+            JSONObject obj = new JSONObject(locationsLoadJSONFromAsset());
 
-            JSONArray locationsList = (JSONArray) obj;
-//			System.out.println(locationsList);
+            // fetch JSONArray named users
+            JSONArray jLocations = obj.getJSONArray("locations");
 
-//			 Iterate over employee array
-            for (int i = 0; i < locationsList.size(); i++) {
-                locations.add(parseLocations((JSONObject) locationsList.get(i)));
+            // implement for loop for getting users list data
+            for (int i = 0; i < jLocations.length(); i++) {
+                locations.add(parseLocations((JSONObject) jLocations.get(i)));
                 locations.get(i).print();
+
+
+                // create a JSONObject for fetching single user data
+                //   JSONObject userDetail = userArray.getJSONObject(i);
+                // fetch email and name and store it in arraylist
+                //personNames.add(userDetail.getString("name"));
+                // emailIds.add(userDetail.getString("email"));
+                // create a object for getting contact data from JSONObject
+                //JSONObject contact = userDetail.getJSONObject("contact");
+                // fetch mobile number and store it in arraylist
+                //mobileNumbers.add(contact.getString("mobile"));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (JSONException e) {
+
         }
     }
 
+    private String locationsLoadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("locations.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    private String itemsLoadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open("items.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
     private static RecycleCenter parseLocations(JSONObject center) {
-        String locationID = (String) center.get("locationID");
-        String address = (String) center.get("address");
-        String city = (String) center.get("city");
-        String phone = (String) center.get("phone");
+        try {
+            String locationID = (String) center.get("locationID");
 
-        //ArrayList<Recyclable> typesAccepted = Arrays.asList((String[]) center.get("typesAccepted"));
+            String address = (String) center.get("address");
+            String city = (String) center.get("city");
+            String phone = (String) center.get("phone");
+            return new RecycleCenter(locationID, address, city, phone, null);
+            //ArrayList<Recyclable> typesAccepted = Arrays.asList((String[]) center.get("typesAccepted"));
+        } catch (JSONException e) {
 
-        return new RecycleCenter(locationID, address, city, phone, null);
+        }
+
+
+        return null;
+    }
+
+    private void setupItemsArray() {
+        try {
+            // get JSONObject from JSON file
+            JSONObject obj = new JSONObject(itemsLoadJSONFromAsset());
+
+            // fetch JSONArray named users
+            JSONArray jItems = obj.getJSONArray("items");
+            // implement for loop for getting users list data
+            for (int i = 0; i < jItems.length(); i++) {
+                items.add(parseItems((JSONObject) jItems.get(i)));
+                items.get(i).print();
+
+
+                // create a JSONObject for fetching single user data
+                //   JSONObject userDetail = userArray.getJSONObject(i);
+                // fetch email and name and store it in arraylist
+                //personNames.add(userDetail.getString("name"));
+                // emailIds.add(userDetail.getString("email"));
+                // create a object for getting contact data from JSONObject
+                //JSONObject contact = userDetail.getJSONObject("contact");
+                // fetch mobile number and store it in arraylist
+                //mobileNumbers.add(contact.getString("mobile"));
+            }
+        } catch (JSONException e) {
+
+        }
 
     }
 
-    private void setupItems() {
+    private static Recyclable parseItems(JSONObject center) {
+        try {
+            String itemID = (String) center.get("itemID");
+
+            int isRecyclable = (int) center.get("isRecyclable");
+            String[] UPC = (String[]) center.get("Products");
+            return new Recyclable(itemID, UPC, isRecyclable);
+            //ArrayList<Recyclable> typesAccepted = Arrays.asList((String[]) center.get("typesAccepted"));
+        } catch (JSONException e) {
+
+        }
 
 
+        return null;
     }
 }
