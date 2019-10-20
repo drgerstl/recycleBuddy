@@ -192,31 +192,32 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void lookUpByScan(String upcCode) {
-        String output = "";
-        for (int i = 0; i < items.size(); i++) {
-            if (upcCode.equals(items.get(i).UPC.trim())) {
-                output = items.get(i).itemID;
+        String output = "NOT FOUND";
+        if (upcCode.equals("")){
+            txtUpcOutput.setText(output);
+        }
 
-                System.out.println(upcCode);
-                //upc is found and matched to type
-                if (items.get(i).isRecyclable == 0) {
-                    output = output + " is not recyclable.";
-                    break;
-                }
-                else if (items.get(i).isRecyclable == 1) {
-                    output = output + " is recyclable at home.";
-                    break;
-                }
+        else {
+            for (int i = 0; i < items.size(); i++) {
+                if (upcCode.equals(items.get(i).UPC.trim())) {
+                    output = items.get(i).itemID;
 
-                else if (items.get(i).isRecyclable == 2) {
-                    output = output + " is recyclable at appropriate locations.";
-                    break;
-                }
+                    System.out.println(upcCode);
+                    //upc is found and matched to type
+                    if (items.get(i).isRecyclable == 0) {
+                        output = output + " is not recyclable.";
+                        break;
+                    } else if (items.get(i).isRecyclable == 1) {
+                        output = output + " is recyclable at home.";
+                        break;
+                    } else if (items.get(i).isRecyclable == 2) {
+                        output = output + " is recyclable at appropriate locations.";
+                        break;
+                    } else {
+                        output += "NOT FOUND";
+                    }
 
-                else {
-                    output += "NOT FOUND";
                 }
-
             }
         }
         txtUpcOutput.setText(output);
