@@ -206,6 +206,10 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                     case 2:
                         output += "recyclable at appropriate locations.";
                         break;
+                        default:
+                            output += "NOT FOUND";
+                            break;
+
                 }
                 }
             }
