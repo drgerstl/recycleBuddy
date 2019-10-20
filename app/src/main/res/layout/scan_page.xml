@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnSelectImage"
+        android:id="@+id/btnTakePicture"
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgGallery"
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="500px"
         android:layout_marginTop="270dp"
