@@ -1,6 +1,7 @@
 package com.example.recyclebuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnSearch;
     Button btnInfo;
     Button btnScan;
+    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnScan.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
+
+        /*** Lock orientation to portrait ***/
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+
+        /*** Set title ***/
+
+        getSupportActionBar().setTitle("Recycle Buddy");
     }
 
     /*** onClick listener method ***/
@@ -50,6 +60,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 clickSearch();
                 break;
         }
+    }
+
+    /*** Back button press event ***/
+
+    public void onBackPressed(){
+//        super.onBackPressed();
+//        if(v.getRootView().getId()!= R.layout.activity_main) {
+//            setContentView(R.layout.activity_main);
+//        }
+
+
+
+        //if (getWindow().getCurrentFocus() == R.layout.activity_main)
+        setContentView(R.layout.activity_main);
     }
 
     /*** Scan button tapped, switch to scan page***/
