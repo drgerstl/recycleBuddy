@@ -129,10 +129,8 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-            myImageView.setImageURI(file);
             try {
                 Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(), file);
-                myImageView.setImageBitmap(bitmap);
                 barcodeDetector(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -181,6 +179,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 upc = thisCode.rawValue;
             }
         }
+        System.out.println("yayaayayayaya " + upc);
         return upc;
     }
 }

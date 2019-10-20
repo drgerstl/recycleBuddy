@@ -82,7 +82,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, SearchActivity.class);
         startActivity(intent);
     }
-
-    // hello
-
 }
