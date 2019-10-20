@@ -22,7 +22,7 @@ public class RecycleItems {
             String in = "items.json";
             JSONObject obj = new JSONObject(in);
             JSONArray itemArray  = obj.getJSONArray("items");
-            itemID = sys.getString("itemID");
+           // itemID = sys.getString("itemID");
         } catch (JSONException e) {
             e.printStackTrace();
         }
