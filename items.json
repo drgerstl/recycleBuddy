@@ -1,0 +1,47 @@
+{
+  "items":[
+  {
+    "itemID":"aluminum can",
+    "isRecyclable":1,
+    "products": {
+      "productID":["Red Bull 8.4 oz","Diet Pepsi 12 oz","White Claw 19.2 oz"]
+      "UPC":["61126999100","0128050","635985260387"]
+    }
+  },
+  {
+    "itemID":"plastic bottle",
+    "isRecyclable":1,
+    "products": {
+      "productID":["Evian 1L","Coke 20 oz","Milk Dean 2p Gal],
+      "UPC":["079298100006","000004904403","041900020125"]
+    }
+  },
+  {
+    "itemID":"motor oil",
+    "isRecyclable":2,
+    "type":"oil"
+  },
+  {
+    "itemID":"cooking oil"
+    "isRecyclable":2,
+    "type":"oil"
+  },
+  {
+    "itemID":"leaves",
+    "isRecyclable":2,
+    "type":"yard waste"
+  },
+  {
+    "itemID":"food waste",
+    "isRecyclable":0
+  },
+  {
+    "itemID":"candy wrapper",
+    "isRecyclable":0
+  },
+  {
+    "itemID":"bubble wrap",
+    "isRecyclable":0
+  }
+  ]
+}
