@@ -5,26 +5,27 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class ScanActivity extends AppCompatActivity implements View.OnClickListener {
 
     /*** Class Variables ***/
 
-    private Button btnHome;
+    private Button btnHomeScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_page);
+        setContentView(R.layout.scan_page);
 
         /*** Get IDs ***/
 
-        btnHome = findViewById(R.id.btnHomeSearch);
+        btnHomeScan = findViewById(R.id.btnHomeScan);
 
         /*** Add onClickListeners ***/
 
-        btnHome.setOnClickListener(this);
+        btnHomeScan.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
 
@@ -40,14 +41,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.btnHomeSearch:
+            case R.id.btnHomeScan:
                 clickHome();
                 break;
         }
     }
 
     private void clickHome(){
-        Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+        Intent intent = new Intent(ScanActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -7,13 +7,19 @@
     android:layout_height="match_parent"
     android:background="#1C661C"
     android:backgroundTint="#1C661C"
+    android:clickable="true"
     android:orientation="vertical">
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="163dp"
         android:layout_height="61dp"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="169dp">
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="155dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHomeSearch">
 
         <RadioButton
             android:id="@+id/radUPC"
@@ -29,7 +35,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnHomeSearch"
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,10 +49,14 @@
         android:id="@+id/txtSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="128dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="239dp" />
+        android:text="Enter product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

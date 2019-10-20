@@ -7,4 +7,16 @@
     android:layout_height="match_parent"
     android:background="#1C661C"
     android:backgroundTint="#1C661C"
-    android:orientation="vertical" />
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnHomeInfo"
+        style="@android:style/Widget.Button"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
