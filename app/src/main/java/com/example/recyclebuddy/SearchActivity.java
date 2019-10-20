@@ -14,6 +14,7 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,17 +29,20 @@ import java.io.InputStream;
 //import org.json.simple.parser.JSONParser;
 //import org.json.simple.parser.ParseException;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     /*** Class Variables ***/
 
     private Button btnHome;
     private Button btnSearch;
     private AutoCompleteTextView txtSearch;
+    private String userSelection;
     private TextView txtOutput;
     private ArrayAdapter<String> adapter;
     private String[] itemIDs = {"Pizza Box", "Snickers Wrapper", "Red Bull Can", "Coke Bottle",
-                                "Cooking Oil", "Motor Oil"};
+                                "Cooking Oil", "Motor Oil", "TV", "fax machine", "aluminum",
+                                "copper","scrap metal","HP printer cartridge" , "leaves",  "weeds",
+                                "noninvasive plants"};
 
     private final static int AT_HOME = 1;
     private final static int DROP_OFF = 2;
@@ -74,7 +78,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         /*** Add Listeners ***/
 
         btnHome.setOnClickListener(this);
-        txtSearch.setOnClickListener(this);
+        txtSearch.setOnItemClickListener(this);
         btnSearch.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
@@ -143,6 +147,11 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+       userSelection =  parent.getItemAtPosition(position).toString();
+    }
+
     private void clickHome() {
         Intent intent = new Intent(SearchActivity.this, MainActivity.class);
         startActivity(intent);
@@ -153,20 +162,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         txtSearch.requestFocus();
     }
 
-
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-    {
-        TextView txtvw=(TextView) view;
-        String str=txtvw.getText().toString();
-        //int index = contactNames.indexOf(str);
-    }
-
     private void clickSearch() {
 
        // System.out.println(items.get(0).print());
 
         String output = "";
-        String text = "Cooking Oil";//txtSearch.getEditableText().toString();
+        String text = userSelection;//txtSearch.getEditableText().toString();
         Recyclable item = null;
 
 //        if (text.equals("")) {
@@ -195,7 +196,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         txtOutput.setText(output);
-
     }
 
     private void setText(String text) {
