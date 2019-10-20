@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnInfo.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
 
-
         /*** Lock orientation to portrait ***/
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);

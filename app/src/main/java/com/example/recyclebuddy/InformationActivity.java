@@ -2,10 +2,12 @@ package com.example.recyclebuddy;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class InformationActivity  extends AppCompatActivity implements View.OnClickListener{
@@ -13,6 +15,9 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
     /*** Class Variables ***/
 
     private Button btnHomeInfo;
+    private AutoCompleteTextView txtInformation;
+    private String[] cities = {"Sun Prairie", "Middleton", "Madison","Fitchburg"};
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +27,22 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
         /*** Get IDs ***/
 
         btnHomeInfo = findViewById(R.id.btnHomeInfo);
+        txtInformation = findViewById(R.id.txtInformation);
+
+        /*** Instantiate ArrayAdapter ***/
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, cities);
+
+        /*** Set autocomplete textfield properties ***/
+
+        txtInformation.setThreshold(1);
+        txtInformation.setAdapter(adapter);
+        txtInformation.setTextColor(Color.BLACK);
 
         /*** Add onClickListeners ***/
 
         btnHomeInfo.setOnClickListener(this);
+        txtInformation.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
 
@@ -44,6 +61,10 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
             case R.id.btnHomeInfo:
                 clickHome();
                 break;
+
+            case R.id.txtInformation:
+                selectInformation();
+                break;
         }
     }
 
@@ -51,4 +72,10 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
         Intent intent = new Intent(InformationActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    private void selectInformation(){
+        txtInformation.setText("");
+        txtInformation.requestFocus();
+    }
 }
+
