@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -152,8 +153,15 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         txtSearch.requestFocus();
     }
 
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        TextView txtvw=(TextView) view;
+        String str=txtvw.getText().toString();
+        //int index = contactNames.indexOf(str);
+    }
+
     private void clickSearch() {
-       // cramTime();
 
        // System.out.println(items.get(0).print());
 

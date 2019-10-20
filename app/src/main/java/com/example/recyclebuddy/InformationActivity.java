@@ -24,6 +24,7 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
     /*** Class Variables ***/
 
     private Button btnHomeInfo;
+    private Button btnSearch;
     private AutoCompleteTextView txtInformation;
     private String[] cities = {"Sun Prairie", "Middleton", "Madison","Fitchburg"};
     private ArrayAdapter<String> adapter;
@@ -37,6 +38,7 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
 
         btnHomeInfo = findViewById(R.id.btnHomeInfo);
         txtInformation = findViewById(R.id.txtInformation);
+        btnSearch = findViewById(R.id.btnSearch);
 
         /*** Instantiate ArrayAdapter ***/
 
@@ -74,6 +76,10 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
             case R.id.txtInformation:
                 selectInformation();
                 break;
+
+            case R.id.btnSearch:
+                clickSearch();
+                break;
         }
     }
 
@@ -85,6 +91,10 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
     private void selectInformation(){
         txtInformation.setText("");
         txtInformation.requestFocus();
+    }
+
+    private void clickSearch(){
+        //TODO
     }
 }
 
