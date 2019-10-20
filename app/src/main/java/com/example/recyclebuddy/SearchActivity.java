@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
