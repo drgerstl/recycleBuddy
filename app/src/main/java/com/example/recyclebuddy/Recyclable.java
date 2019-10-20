@@ -10,10 +10,11 @@ public class Recyclable {
 
     }
 
-    public Recyclable(String itemID, String UPC, int isRecyclable) {
+    public Recyclable(String itemID, String UPC, int isRecyclable, String type) {
         this.itemID = itemID;
         this.UPC = UPC;
         this.isRecyclable = isRecyclable;
+        this.type=type;
     }
     public void print(){
         System.out.println("itemID: "+itemID);

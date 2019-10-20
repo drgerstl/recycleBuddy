@@ -230,7 +230,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 new String[] {"printer ink"}));
 
         items.add(new Recyclable("pizza box","",0,""));
-        items.add(new Recyclable("Snickers wrapper","040000151463",0,""));
+        items.add(new Recyclable("Snickers Wrapper","040000151463",0,""));
         items.add(new Recyclable("Red Bull can","61126999100",1,""));
         items.add(new Recyclable("Coke bottle","000004904403",1,""));
         items.add(new Recyclable("cooking oil","",2,"oil"));
@@ -244,6 +244,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         items.add(new Recyclable("leaves","",2,"yard waste"));
         items.add(new Recyclable("weeds","",2,"yard waste"));
         items.add(new Recyclable("noninvasive plants","",2,"yard waste"));
-
+String[] itemIDs = {"Pizza Box", "Snickers Wrapper", "Red Bull Can", "Coke Bottle", "Cooking Oil", "Motor Oil"};
     }
 }
