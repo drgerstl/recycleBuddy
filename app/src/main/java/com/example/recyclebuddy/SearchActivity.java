@@ -5,13 +5,21 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     /*** Class Variables ***/
 
     private Button btnHome;
+    private MultiAutoCompleteTextView txtSearch;
+    private RadioGroup radioGroup;
+    private RadioButton radUPC;
+    private RadioButton radProductType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +30,17 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         /*** Get IDs ***/
 
-        btnHome = findViewById(R.id.btnHomeSearch);
+        btnHome        = findViewById(R.id.btnHomeSearch);
+        txtSearch      = findViewById(R.id.txtSearch);
+        radioGroup     = findViewById(R.id.radioGroup);
+        radUPC         = findViewById(R.id.radUPC);
+        radProductType = findViewById(R.id.radProductType);
 
-        /*** Add onClickListeners ***/
+        /*** Add Listeners ***/
 
-        btnHome.setOnClickListener(this);
+           btnHome.setOnClickListener(this);
+         txtSearch.setOnClickListener(this);
+        radioGroup.setOnCheckedChangeListener(this);
 
         /*** Lock orientation to portrait ***/
 
@@ -34,10 +48,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         /*** Set title ***/
 
-        getSupportActionBar().setTitle("Recycle Buddy");
+        getSupportActionBar().setTitle("Recycle Buddy - Product Search");
     }
 
-    /*** onClick listener method ***/
+    /*** Listener methods ***/
     @Override
     public void onClick(View view) {
 
@@ -45,6 +59,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnHomeSearch:
                 clickHome();
                 break;
+
+            case R.id.txtSearch:
+                clearText();
+                break;
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if (checkedId == radUPC.getId()){
+            setText("Enter UPC");
+        }
+        else if (checkedId == radProductType.getId()){
+            setText("Enter product");
         }
     }
 
@@ -52,4 +80,14 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent(SearchActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    private void clearText(){
+        txtSearch.setText("");
+    }
+
+    private void setText(String text){
+        txtSearch.setText(text);
+    }
+
+
 }

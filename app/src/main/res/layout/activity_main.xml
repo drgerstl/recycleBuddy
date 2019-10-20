@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E70505"
-    android:backgroundTint="#1C661C"
+    android:backgroundTint="#81C8D4"
     android:foregroundTint="#00E60C0C"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -64,7 +64,7 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="125dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/recycling_logo"
+        android:background="@drawable/thumbnail_recycling_logo_darker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

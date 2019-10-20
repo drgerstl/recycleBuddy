@@ -33,7 +33,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
         /*** Set title ***/
 
-        getSupportActionBar().setTitle("Recycle Buddy");
+        getSupportActionBar().setTitle("Recycle Buddy - Scanner");
     }
 
     /*** onClick listener method ***/

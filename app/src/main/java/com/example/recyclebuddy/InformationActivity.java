@@ -33,7 +33,7 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
 
         /*** Set title ***/
 
-        getSupportActionBar().setTitle("Recycle Buddy");
+        getSupportActionBar().setTitle("Recycle Buddy - Information");
     }
 
     /*** onClick listener method ***/

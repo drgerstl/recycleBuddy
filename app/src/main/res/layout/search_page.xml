@@ -5,8 +5,8 @@
     android:id="@+id/searchPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C661C"
-    android:backgroundTint="#1C661C"
+    android:background="#9fefef"
+    android:backgroundTint="#81C8D4"
     android:clickable="true"
     android:orientation="vertical">
 
@@ -14,7 +14,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="163dp"
         android:layout_height="61dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="97dp"
         android:layout_marginTop="105dp"
         android:layout_marginEnd="155dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,13 +25,20 @@
             android:id="@+id/radUPC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UPC" />
+            android:text="UPC"
+            android:textColorHighlight="#00000000"
+            android:textColorLink="#000000"
+            android:textCursorDrawable="@color/colorAccent" />
 
         <RadioButton
             android:id="@+id/radProductType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Product type" />
+            android:text="Product type"
+            android:textColorHighlight="#00000000"
+            android:textColorHint="#00000000"
+            android:textColorLink="#00000000"
+            android:textCursorDrawable="@color/colorAccent" />
     </RadioGroup>
 
     <Button
@@ -45,16 +52,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <MultiAutoCompleteTextView
         android:id="@+id/txtSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="128dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter product"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="107dp"
+        android:width="210dp"
+        android:background="#FDFBFB"
+        android:text=" "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />

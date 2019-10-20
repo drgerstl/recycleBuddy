@@ -5,8 +5,8 @@
     android:id="@+id/scanPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C661C"
-    android:backgroundTint="#1C661C">
+    android:background="#9fefef"
+    android:backgroundTint="#81C8D4">
 
     <Button
         android:id="@+id/btnHomeScan"
