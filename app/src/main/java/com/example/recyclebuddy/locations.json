@@ -1,0 +1,93 @@
+{
+"locations" : [
+{
+  "locationID":"Madison East",
+  "address":"4602 Sycamore Ave",
+  "city":"Madison",
+  "phone":"608-246-4532",
+  "accepts": {
+    "type": ["cell phones","oil","electronics","yard waste","large items","scrap metal","appliances","styrofoam","cardboard"]
+  }
+},
+{
+  "locationID":"Madison West",
+  "address":"1501 W Badger Rd",
+  "phone":"608-266-4681",
+  "city":"Madison",
+    "accepts": {
+    "type": ["cell phones","oil","electronics","yard waste","large items","scrap metal","appliances","styrofoam","cardboard"]
+  }
+},
+{
+  "locationID":"Madison Yard Waste",
+  "address":"402 South Point Rd",
+  "city":"Madison",
+  "accepts": {
+    "type":"yard waste"
+  }
+},
+{
+  "locationID":"Reynolds Urethane Recycling",
+  "address":"2701 Progress Rd",
+  "phone":"608-906-4244",
+  "city":"Madison",
+  "accepts": {
+    "type":"poly materials"
+  }
+},
+{
+  "locationID":"Henry Vilas Zoo",
+  "address":"606 Randall Ave",
+  "phone":"608-266-4732",
+  "city":"Madison",
+  "accepts": {
+    "type":"cell phones"
+  }
+},
+{
+  "locationID":"Sun Prarie",
+  "address":"1798 South Bird St",
+  "phone":"608-837-3050",
+  "city":"Sun Prarie",
+  "accepts": {
+    "type": ["yard waste","oil","scrap metal","appliances","cardboard"]
+  }
+},
+{
+  "locationID":"Middleton Recycling Center",
+  "address":"7426 Hubbard Ave",
+  "phone":"608-821-8350",
+  "city":"Middleton",
+  "accepts": {
+    "type": ["cell phones","electronics","rbatteries","printer ink","styrofoam","textiles","shows","wood","cardboard","scrap metal","eyeglasses","oil"]
+  }
+},
+{
+  "locationID":"The Can Man",
+  "address":"7432 Schneider Rd",
+  "phone":"608-831-2775",
+  "city":"Middleton",
+  "accepts": {
+    "type":"scrap metal"
+  }
+},
+{
+  "locationID":"Fitchburg Drop Off",
+  "address":"2373 S Fish Hatchery Rd",
+  "phone":" ",
+  "city":"Fitchburg",
+  "accepts": {
+    "type": ["yard waste","scrap metal","cardboard","oil","styrofoam"]
+  }
+},
+{
+  "locationID":"Fitchburg City Hall Lobby",
+  "address":"5520 Lacy Rd",
+  "phone":"608-270-4200",
+  "city":"Fitchburg",
+  "accepts": {
+    "type": ["eyeglasses","hearing aids","printer ink","cell phones"]
+  }
+},
+]
+}
