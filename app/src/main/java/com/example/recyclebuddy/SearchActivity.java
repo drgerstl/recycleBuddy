@@ -15,6 +15,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /*** Load database ***/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
 
