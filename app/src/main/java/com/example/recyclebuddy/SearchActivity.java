@@ -11,12 +11,8 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -128,16 +124,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 locations.add(parseLocations((JSONObject) jLocations.get(i)));
                 locations.get(i).print();
 
-
-                // create a JSONObject for fetching single user data
-                //   JSONObject userDetail = userArray.getJSONObject(i);
-                // fetch email and name and store it in arraylist
-                //personNames.add(userDetail.getString("name"));
-                // emailIds.add(userDetail.getString("email"));
-                // create a object for getting contact data from JSONObject
-                //JSONObject contact = userDetail.getJSONObject("contact");
-                // fetch mobile number and store it in arraylist
-                //mobileNumbers.add(contact.getString("mobile"));
             }
         } catch (JSONException e) {
 
