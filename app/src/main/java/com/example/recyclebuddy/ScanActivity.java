@@ -140,7 +140,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), file);
-                barcodeDetector(bitmap);
+                lookUpByScan(barcodeDetector(bitmap));
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -187,7 +187,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 strUpc = thisCode.rawValue;
             }
         }
-        lookUpByScan(strUpc);
+
         return strUpc;
     }
 
