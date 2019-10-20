@@ -200,7 +200,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                     if (items.get(i).type.equalsIgnoreCase(locations.get(j).typesAccepted[0])) {
                         output += "\n" + (locations.get(j).locationID);
                     }
-                }
+                }//
             }
         }
         txtUpcOutput.setText(output);
