@@ -59,17 +59,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
+        android:layout_width="263dp"
+        android:layout_height="254dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="125dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/thumbnail_recycling_logo_darker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInfo"
+        app:layout_constraintVertical_bias="0.632"
         app:srcCompat="@drawable/recycling_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
