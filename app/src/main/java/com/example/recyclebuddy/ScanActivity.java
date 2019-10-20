@@ -140,7 +140,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), file);
-                lookUpByScan(barcodeDetector(bitmap));
+                lookUpByScan(barcodeDetector(bitmap).trim());
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -194,7 +194,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
     private void lookUpByScan(String upcCode) {
         String output = "";
         for (int i = 0; i < items.size(); i++) {
-            if (upcCode.equals(items.get(i).UPC)) {
+            if (upcCode.equals(items.get(i).UPC.trim())) {
                 output = items.get(i).itemID;
 
                 System.out.println(upcCode);
