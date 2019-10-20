@@ -179,7 +179,6 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 upc = thisCode.rawValue;
             }
         }
-        System.out.println("yayaayayayaya " + upc);
         return upc;
     }
 }
