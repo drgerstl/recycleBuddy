@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/searchPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1C661C"
+    android:backgroundTint="#1C661C"
     android:orientation="vertical">
 
-</LinearLayout>
+    <RadioGroup
+        android:layout_width="163dp"
+        android:layout_height="61dp"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="169dp">
+
+        <RadioButton
+            android:id="@+id/radUPC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UPC" />
+
+        <RadioButton
+            android:id="@+id/radProductType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product type" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnHome"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

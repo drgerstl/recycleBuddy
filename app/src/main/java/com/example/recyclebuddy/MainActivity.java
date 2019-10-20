@@ -1,6 +1,9 @@
 package com.example.recyclebuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnInfo;
     Button btnScan;
     View v;
+    Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnScan.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
+        btnHome.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
 
@@ -59,22 +64,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSearch:
                 clickSearch();
                 break;
+
+            case R.id.btnHome:
+                clickHome();
+                break;
         }
     }
 
     /*** Back button press event ***/
 
-    public void onBackPressed(){
-//        super.onBackPressed();
-//        if(v.getRootView().getId()!= R.layout.activity_main) {
+//    public void onBackPressed(){
+//        View currentView = this.findViewById(android.R.id.content).getRootView();
+//
+//        if (!currentView.equals(R.layout.activity_main)) {
 //            setContentView(R.layout.activity_main);
 //        }
-
-
-
-        //if (getWindow().getCurrentFocus() == R.layout.activity_main)
-        setContentView(R.layout.activity_main);
-    }
+//        else {
+//            moveTaskToBack(true);
+//        }
+//    }
 
     /*** Scan button tapped, switch to scan page***/
 
@@ -92,5 +100,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void clickSearch(){
         setContentView(R.layout.seach_page);
+    }
+
+    private void clickHome(){
+        setContentView(R.layout.activity_main);
     }
 }
