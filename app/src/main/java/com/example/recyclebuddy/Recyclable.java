@@ -1,15 +1,16 @@
 package com.example.recyclebuddy;
 
 public class Recyclable {
-    String itemID;
+    String itemID; //specific thing
+    String type; //
     int isRecyclable;
-    String UPC[];
+    String UPC;
 
     public Recyclable() {
 
     }
 
-    public Recyclable(String itemID, String[] UPC, int isRecyclable) {
+    public Recyclable(String itemID, String UPC, int isRecyclable) {
         this.itemID = itemID;
         this.UPC = UPC;
         this.isRecyclable = isRecyclable;
