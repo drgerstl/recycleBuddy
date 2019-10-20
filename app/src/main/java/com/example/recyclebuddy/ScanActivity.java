@@ -135,4 +135,6 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         }
         return upc;
     }
+
+    // aye
 }
