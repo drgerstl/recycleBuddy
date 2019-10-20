@@ -7,14 +7,14 @@ public class RecycleCenter {
     private String address;
     private String city;
     private String phone;
-    private ArrayList<Recyclable> typesAccepted;
+    private String[] typesAccepted;
 
     public RecycleCenter() {
 
     }
 
     public RecycleCenter(String locationID, String address, String city, String phone,
-                         ArrayList<Recyclable> typesAccepted) {
+                         String[] typesAccepted) {
         this.locationID = locationID;
         this.address = address;
         this.city = city;
