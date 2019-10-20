@@ -43,8 +43,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private final static int DROP_OFF = 2;
     private final static int NO_RECYCLE = 0;
 
-    static ArrayList<Recyclable> items;
-    static ArrayList<RecycleCenter> locations;
+    private ArrayList<Recyclable> items = new ArrayList<>();
+    private ArrayList<RecycleCenter> locations = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,43 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         getSupportActionBar().setTitle("Recycle Buddy - Product Search");
 
+        locations.add(new RecycleCenter("Madison Wast", "1501 W Badger Rd", "Madison", "608-266-4681",
+                new String[] {"oil","electronics","yard waste","scrap metal"}));
+        locations.add(new RecycleCenter("Madison Eest", "4602 Sycamore Ave", "Madison", "608-246-4532",
+                new String[] {"electronics","yard waste","scrap metal"}));
+        locations.add(new RecycleCenter("Madison Yard Waste", "402 South Point Rd", "Madison", null,
+                new String[] {"yard waste"}));
+        locations.add(new RecycleCenter("Reynolds Urethane Recycling", "2701 Progress Rd", "Madison", "608-906-4244",
+                new String[] {"poly materials"}));
+        locations.add(new RecycleCenter("Henry Vilas Zoo", "606 Randall Ave", "Madison", "608-266-4732",
+                new String[] {"cell phones"}));
+        locations.add(new RecycleCenter("Sun Prarie", "1798 South Bird St", "Sun Prarie", "608-837-3050",
+                new String[] {"Yard Waste","Oil", "Scrap Metal"}));
+        locations.add(new RecycleCenter("Middleton Recycling Center", "7426 Hubbard Ave", "Middleton", "608-821-8350",
+                new String[] {"electronics","printer ink","scrap metal"}));
+        locations.add(new RecycleCenter("The Can Man","7432 Schneider Rd", "Middleton", "608-831-2775",
+                new String[] {"Scrap Metal"}));
+        locations.add(new RecycleCenter("Fitchburg Drop Off", "2373 S Fish Hatchery Rd", "Fitchburg", "N/A",
+                new String[] {"electronics","Scrap Metal"}));
+        locations.add(new RecycleCenter("Fitchburg City Hall Lobby", "5520 Lacy Rd", "Fitchburg", "608-270-4200",
+                new String[] {"printer ink"}));
+
+        items.add(new Recyclable("pizza box","",0,""));
+        items.add(new Recyclable("Snickers Wrapper","040000151463",0,""));
+        items.add(new Recyclable("Red Bull can","61126999100",1,""));
+        items.add(new Recyclable("Coke bottle","000004904403",1,""));
+        items.add(new Recyclable("cooking oil","",2,"oil"));
+        items.add(new Recyclable("motor oil","",2,"oil"));
+        items.add(new Recyclable("TV","",2,"electronics"));
+        items.add(new Recyclable("fax machine","",2,"electronics"));
+        items.add(new Recyclable("aluminum","",2,"scrap metal"));
+        items.add(new Recyclable("copper","",2,"scrap metal"));
+        items.add(new Recyclable("scrap metal","",2,"scrap metal"));
+        items.add(new Recyclable("HP printer cartridge","886985910554",2,"printer ink"));
+        items.add(new Recyclable("leaves","",2,"yard waste"));
+        items.add(new Recyclable("weeds","",2,"yard waste"));
+        items.add(new Recyclable("noninvasive plants","",2,"yard waste"));
+
     }
 
     /*** Listener methods ***/
@@ -116,15 +153,21 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void clickSearch() {
+       // cramTime();
+
+       // System.out.println(items.get(0).print());
+
         String output = "";
-        String text = txtSearch.toString();
+        String text = "Cooking Oil";//txtSearch.getEditableText().toString();
         Recyclable item = null;
 
-        if (text.equals("")) {
-            txtOutput.setText("Item not provided");
-        }
+//        if (text.equals("")) {
+//            txtOutput.setText("Item not provided");
+//        }
 
-        else {
+        //else
+
+        {
             for (int i = 0; i < items.size(); i++)
                 if (items.get(i).itemID.equalsIgnoreCase(text)){
                     item = items.get(i);
@@ -142,6 +185,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         }
+
+        txtOutput.setText(output);
 
     }
 
@@ -246,7 +291,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         return null;
     }
 
-    private static void cramTime() {
+    private void cramTime() {
 
         locations.add(new RecycleCenter("Madison Wast", "1501 W Badger Rd", "Madison", "608-266-4681",
                 new String[] {"oil","electronics","yard waste","scrap metal"}));
@@ -265,7 +310,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         locations.add(new RecycleCenter("The Can Man","7432 Schneider Rd", "Middleton", "608-831-2775",
                 new String[] {"Scrap Metal"}));
         locations.add(new RecycleCenter("Fitchburg Drop Off", "2373 S Fish Hatchery Rd", "Fitchburg", "N/A",
-                new String[] {"",""}));
+                new String[] {"electronics","Scrap Metal"}));
         locations.add(new RecycleCenter("Fitchburg City Hall Lobby", "5520 Lacy Rd", "Fitchburg", "608-270-4200",
                 new String[] {"printer ink"}));
 

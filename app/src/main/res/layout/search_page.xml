@@ -62,6 +62,7 @@
         android:background="#FFFFFF"
         android:ems="10"
         android:text=" "
+        android:lines="1"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
