@@ -196,9 +196,9 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < items.size(); i++) {
             if (upcCode.equals(items.get(i).UPC)) {
                 //upc is found and matched to type
-                for (int j = 0; j < locations.get(i).typesAccepted.length; j++) {
-                    if (items.get(i).type.equalsIgnoreCase(locations.get(j).typesAccepted[j])) {
-                        output += "\n" + (locations.get(i).locationID);
+                for (int j = 0; j < locations.size(); j++) {
+                    if (items.get(i).type.equalsIgnoreCase(locations.get(j).typesAccepted[0])) {
+                        output += "\n" + (locations.get(j).locationID);
                     }
                 }
             }
