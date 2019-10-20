@@ -196,15 +196,13 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < items.size(); i++) {
             if (upcCode.equals(items.get(i).UPC)) {
                 //upc is found and matched to type
-                for (int j = 0; j < locations.size(); j++) {
-                    if (items.get(i).type.equalsIgnoreCase(locations.get(j).typesAccepted[0])) {
-                        output += "\n" + (locations.get(j).locationID);
-                    }
+                output = items.get(i).isRecyclable;
                 }//
             }
-        }
         txtUpcOutput.setText(output);
-    }
+        }
+
+
     public void cramTime(){
         locations.add(new RecycleCenter("Madison Wast", "1501 W Badger Rd", "Madison", "608-266-4681",
                 new String[]{"oil", "electronics", "yard waste", "scrap metal"}));
