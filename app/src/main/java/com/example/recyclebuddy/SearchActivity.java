@@ -11,6 +11,20 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.ArrayList;
+
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     /*** Class Variables ***/
@@ -20,6 +34,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private RadioGroup radioGroup;
     private RadioButton radUPC;
     private RadioButton radProductType;
+
+    private final static int atHome = 1;
+    private final static int dropOff = 2;
+    private final static int noRecycle = 0;
+
+    static ArrayList<Recyclable> items;
+    static ArrayList<RecycleCenter> locations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +70,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         /*** Set title ***/
 
         getSupportActionBar().setTitle("Recycle Buddy - Product Search");
+
+        setupLocation();
+        setupItems();
     }
 
     /*** Listener methods ***/
@@ -89,5 +113,43 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         txtSearch.setText(text);
     }
 
+    private void setupLocation() {
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader readerLocations = new FileReader("locations.json")) {
+            // Read JSON file
+            Object obj = jsonParser.parse(readerLocations);
 
+            JSONArray locationsList = (JSONArray) obj;
+//			System.out.println(locationsList);
+
+//			 Iterate over employee array
+            for (int i = 0; i < locationsList.size(); i++) {
+                locations.add(parseLocations((JSONObject) locationsList.get(i)));
+                locations.get(i).print();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static RecycleCenter parseLocations(JSONObject center) {
+        String locationID = (String) center.get("locationID");
+        String address = (String) center.get("address");
+        String city = (String) center.get("city");
+        String phone = (String) center.get("phone");
+
+        //ArrayList<Recyclable> typesAccepted = Arrays.asList((String[]) center.get("typesAccepted"));
+
+        return new RecycleCenter(locationID, address, city, phone, null);
+
+    }
+
+    private void setupItems() {
+
+
+    }
 }
