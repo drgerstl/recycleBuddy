@@ -34,9 +34,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private RadioButton radUPC;
     private RadioButton radProductType;
 
-    private final static int atHome = 1;
-    private final static int dropOff = 2;
-    private final static int noRecycle = 0;
+    private final static int AT_HOME = 1;
+    private final static int DROP_OFF = 2;
+    private final static int NO_RECYCLE = 0;
 
     static ArrayList<Recyclable> items;
     static ArrayList<RecycleCenter> locations;
@@ -70,8 +70,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         getSupportActionBar().setTitle("Recycle Buddy - Product Search");
 
+        /*** Parse JSON ***/
+
         setupLocationArray();
         setupItemsArray();
+
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
+        for(int i = 0; i < items.size(); i++){
+            items.get(i).print();
+        }
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
     }
 
     /*** Listener methods ***/
@@ -174,8 +186,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         } catch (JSONException e) {
 
         }
-
-
         return null;
     }
 
