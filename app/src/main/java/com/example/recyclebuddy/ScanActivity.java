@@ -200,16 +200,16 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 System.out.println(upcCode);
                 //upc is found and matched to type
                 if (items.get(i).isRecyclable == 0) {
-                    output += " is not recyclable.";
+                    output = output + " is not recyclable.";
                     break;
                 }
                 else if (items.get(i).isRecyclable == 1) {
-                    output += " is recyclable at home.";
+                    output = output + " is recyclable at home.";
                     break;
                 }
 
                 else if (items.get(i).isRecyclable == 2) {
-                    output += " is recyclable at appropriate locations.";
+                    output = output + " is recyclable at appropriate locations.";
                     break;
                 }
 
