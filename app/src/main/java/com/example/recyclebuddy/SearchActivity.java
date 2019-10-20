@@ -190,17 +190,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < jItems.length(); i++) {
                 items.add(parseItems((JSONObject) jItems.get(i)));
                 items.get(i).print();
-
-
-                // create a JSONObject for fetching single user data
-                //   JSONObject userDetail = userArray.getJSONObject(i);
-                // fetch email and name and store it in arraylist
-                //personNames.add(userDetail.getString("name"));
-                // emailIds.add(userDetail.getString("email"));
-                // create a object for getting contact data from JSONObject
-                //JSONObject contact = userDetail.getJSONObject("contact");
-                // fetch mobile number and store it in arraylist
-                //mobileNumbers.add(contact.getString("mobile"));
             }
         } catch (JSONException e) {
 
@@ -215,12 +204,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             int isRecyclable = (int) center.get("isRecyclable");
             String[] UPC = (String[]) center.get("Products");
             return new Recyclable(itemID, UPC, isRecyclable);
-            //ArrayList<Recyclable> typesAccepted = Arrays.asList((String[]) center.get("typesAccepted"));
         } catch (JSONException e) {
 
         }
-
-
         return null;
     }
 }
