@@ -15,16 +15,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class ScanActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,10 +52,10 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
         /*** Get IDs ***/
 
-        btnHomeScan    = findViewById(R.id.btnHomeScan);
+        btnHomeScan = findViewById(R.id.btnHomeScan);
         btnTakePicture = findViewById(R.id.btnTakePicture);
-        txtUpcOutput   = findViewById(R.id.txtUpcOutput);
-        myImageView    = findViewById(R.id.image);
+        txtUpcOutput = findViewById(R.id.txtUpcOutput);
+        myImageView = findViewById(R.id.image);
 
         /*** Ignores file URI exposure ***/
 
@@ -60,7 +64,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
         /*** Add onClickListeners ***/
 
-           btnHomeScan.setOnClickListener(this);
+        btnHomeScan.setOnClickListener(this);
         btnTakePicture.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
@@ -76,8 +80,8 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             btnTakePicture.setEnabled(false);
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }
 
@@ -111,7 +115,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
     /*** Click Event Helper Methods ***/
 
-    private void clickHome(){
+    private void clickHome() {
         Intent intent = new Intent(ScanActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -131,7 +135,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             try {
-                Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(), file);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), file);
                 barcodeDetector(bitmap);
 
             } catch (IOException e) {
@@ -140,19 +144,19 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private static File getOutputMediaFile(){
+    private static File getOutputMediaFile() {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "CameraDemo");
 
-        if (!mediaStorageDir.exists()){
-            if (!mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
                 return null;
             }
         }
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         return new File(mediaStorageDir.getPath() + File.separator +
-                "IMG_"+ timeStamp + ".jpg");
+                "IMG_" + timeStamp + ".jpg");
     }
 
     private String barcodeDetector(Bitmap bitmap) {
@@ -162,25 +166,28 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         String strUpc = "";
 
         BarcodeDetector detector = new BarcodeDetector.Builder(getApplicationContext())
-                        .setBarcodeFormats(Barcode.UPC_A | Barcode.UPC_E).build();
+                .setBarcodeFormats(Barcode.UPC_A | Barcode.UPC_E).build();
 
-        if(!detector.isOperational()){
+        if (!detector.isOperational()) {
             txtUpcOutput.setText("Could not set up the detector!");
         }
-        if (bitmap == null){
+        if (bitmap == null) {
             txtUpcOutput.setText("Invalid image provided");
-        }
-        else {
+        } else {
             Frame frame = new Frame.Builder().setBitmap(bitmap).build();
             SparseArray<Barcode> barcodes = detector.detect(frame);
-            if (barcodes.size() == 0){
+            if (barcodes.size() == 0) {
                 txtUpcOutput.setText("No Valid UPC Found");
-            }
-            else {
+            } else {
                 Barcode thisCode = barcodes.valueAt(0);
                 strUpc = thisCode.rawValue;
             }
         }
+        lookUpByScan(strUpc);
         return strUpc;
+    }
+
+    private void lookUpByScan(String upcCode) {
+
     }
 }
