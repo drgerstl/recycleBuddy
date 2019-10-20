@@ -70,21 +70,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
         getSupportActionBar().setTitle("Recycle Buddy - Product Search");
 
-        /*** Parse JSON ***/
-/**
- setupLocationArray();
- setupItemsArray();
-
- System.out.println("**********************************************************");
- System.out.println("**********************************************************");
- System.out.println("**********************************************************");
- for(int i = 0; i < items.size(); i++){
- items.get(i).print();
- }
- System.out.println("**********************************************************");
- System.out.println("**********************************************************");
- System.out.println("**********************************************************");
- **/
     }
 
     /*** Listener methods ***/
@@ -222,7 +207,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private static void cramTime() {
-        items.add(new Recyclable("Red Bull Can", "61126999100", 1));
 
         locations.add(new RecycleCenter("Madison Wast", "1501 W Badger Rd", "Madison", "608-266-4681",
                 new String[] {"oil","electronics","yard waste","scrap metal"}));
@@ -244,5 +228,22 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 new String[] {"",""}));
         locations.add(new RecycleCenter("Fitchburg City Hall Lobby", "5520 Lacy Rd", "Fitchburg", "608-270-4200",
                 new String[] {"printer ink"}));
+
+        items.add(new Recyclable("pizza box","",0,""));
+        items.add(new Recyclable("Snickers wrapper","040000151463",0,""));
+        items.add(new Recyclable("Red Bull can","61126999100",1,""));
+        items.add(new Recyclable("Coke bottle","000004904403",1,""));
+        items.add(new Recyclable("cooking oil","",2,"oil"));
+        items.add(new Recyclable("motor oil","",2,"oil"));
+        items.add(new Recyclable("TV","",2,"electronics"));
+        items.add(new Recyclable("fax machine","",2,"electronics"));
+        items.add(new Recyclable("aluminum","",2,"scrap metal"));
+        items.add(new Recyclable("copper","",2,"scrap metal"));
+        items.add(new Recyclable("scrap metal","",2,"scrap metal"));
+        items.add(new Recyclable("HP printer cartridge","886985910554",2,"printer ink"));
+        items.add(new Recyclable("leaves","",2,"yard waste"));
+        items.add(new Recyclable("weeds","",2,"yard waste"));
+        items.add(new Recyclable("noninvasive plants","",2,"yard waste"));
+
     }
 }
