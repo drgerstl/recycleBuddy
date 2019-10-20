@@ -230,19 +230,19 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 new String[] {"electronics","yard waste","scrap metal"}));
         locations.add(new RecycleCenter("Madison Yard Waste", "402 South Point Rd", "Madison", null,
                 new String[] {"yard waste"}));
-        locations.add(new RecycleCenter("Reynolds Urethane Recycling", "", "", "",
+        locations.add(new RecycleCenter("Reynolds Urethane Recycling", "2701 Progress Rd", "Madison", "608-906-4244",
+                new String[] {"poly materials"}));
+        locations.add(new RecycleCenter("Henry Vilas Zoo", "606 Randall Ave", "Madison", "608-266-4732",
+                new String[] {"cell phones"}));
+        locations.add(new RecycleCenter("Sun Prarie", "1798 South Bird St", "Sun Prarie", "608-837-3050",
+                new String[] {"Yard Waste","Oil", "Scrap Metal"}));
+        locations.add(new RecycleCenter("Middleton Recycling Center", "7426 Hubbard Ave", "Middleton", "608-821-8350",
+                new String[] {"electronics","printer ink","scrap metal"}));
+        locations.add(new RecycleCenter("The Can Man","7432 Schneider Rd", "Middleton", "608-831-2775",
+                new String[] {"Scrap Metal"}));
+        locations.add(new RecycleCenter("Fitchburg Drop Off", "2373 S Fish Hatchery Rd", "Fitchburg", "N/A",
                 new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
-        locations.add(new RecycleCenter("", "", "", "",
-                new String[] {"",""}));
+        locations.add(new RecycleCenter("Fitchburg City Hall Lobby", "5520 Lacy Rd", "Fitchburg", "608-270-4200",
+                new String[] {"printer ink"}));
     }
 }
