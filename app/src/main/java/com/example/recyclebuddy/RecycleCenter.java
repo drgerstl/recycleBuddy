@@ -3,11 +3,11 @@ package com.example.recyclebuddy;
 import java.util.ArrayList;
 
 public class RecycleCenter {
-    private String locationID;
+    public String locationID;
     private String address;
     private String city;
     private String phone;
-    private String[] typesAccepted;
+    public String[] typesAccepted;
 
     public RecycleCenter() {
 

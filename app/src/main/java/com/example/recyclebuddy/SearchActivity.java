@@ -2,12 +2,17 @@ package com.example.recyclebuddy;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,20 +24,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
-
-import java.util.Arrays;
 //import org.json.simple.parser.JSONParser;
 //import org.json.simple.parser.ParseException;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
     /*** Class Variables ***/
 
     private Button btnHome;
-    private MultiAutoCompleteTextView txtSearch;
-    private RadioGroup radioGroup;
-    private RadioButton radUPC;
-    private RadioButton radProductType;
+    private Button btnSearch;
+    private AutoCompleteTextView txtSearch;
+    private TextView txtOutput;
+    private ArrayAdapter<String> adapter;
+    private String[] itemIDs = {"Pizza Box", "Snickers Wrapper", "Red Bull Can", "Coke Bottle",
+                                "Cooking Oil", "Motor Oil"};
 
     private final static int AT_HOME = 1;
     private final static int DROP_OFF = 2;
@@ -48,19 +53,28 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
 
+        /*** Instantiate ArrayAdapter ***/
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, itemIDs);
+
         /*** Get IDs ***/
 
         btnHome = findViewById(R.id.btnHomeSearch);
         txtSearch = findViewById(R.id.txtSearch);
-        radioGroup = findViewById(R.id.radioGroup);
-        radUPC = findViewById(R.id.radUPC);
-        radProductType = findViewById(R.id.radProductType);
+        btnSearch = findViewById(R.id.btnSearch);
+        txtOutput = findViewById(R.id.txtOutput);
+
+        /*** Set autocomplete textfield properties ***/
+
+        txtSearch.setThreshold(1);
+        txtSearch.setAdapter(adapter);
+        txtSearch.setTextColor(Color.BLACK);
 
         /*** Add Listeners ***/
 
         btnHome.setOnClickListener(this);
         txtSearch.setOnClickListener(this);
-        radioGroup.setOnCheckedChangeListener(this);
+        btnSearch.setOnClickListener(this);
 
         /*** Lock orientation to portrait ***/
 
@@ -81,18 +95,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 clickHome();
                 break;
 
-            case R.id.txtSearch:
+            case R.id.txtSearchPrompt:
                 clearText();
                 break;
-        }
-    }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (checkedId == radUPC.getId()) {
-            setText("Enter UPC");
-        } else if (checkedId == radProductType.getId()) {
-            setText("Enter product");
+            case R.id.btnSearch:
+                clickSearch();
+                break;
         }
     }
 
@@ -103,6 +112,37 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     private void clearText() {
         txtSearch.setText("");
+        txtSearch.requestFocus();
+    }
+
+    private void clickSearch() {
+        String output = "";
+        String text = txtSearch.toString();
+        Recyclable item = null;
+
+        if (text.equals("")) {
+            txtOutput.setText("Item not provided");
+        }
+
+        else {
+            for (int i = 0; i < items.size(); i++)
+                if (items.get(i).itemID.equalsIgnoreCase(text)){
+                    item = items.get(i);
+                }
+        }
+
+        if (item != null){
+            for (int i = 0; i < locations.size(); i++) {
+                if (locations.get(i).typesAccepted.length > 0) {
+                    for (int j = 0; j < locations.get(i).typesAccepted.length; j++) {
+                        if (item.type.equalsIgnoreCase(locations.get(i).typesAccepted[j])) {
+                            output += "\n" + (locations.get(i).locationID);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     private void setText(String text) {
@@ -244,6 +284,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         items.add(new Recyclable("leaves","",2,"yard waste"));
         items.add(new Recyclable("weeds","",2,"yard waste"));
         items.add(new Recyclable("noninvasive plants","",2,"yard waste"));
-String[] itemIDs = {"Pizza Box", "Snickers Wrapper", "Red Bull Can", "Coke Bottle", "Cooking Oil", "Motor Oil"};
+
     }
 }

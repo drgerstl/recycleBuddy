@@ -10,37 +10,6 @@
     android:clickable="true"
     android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="163dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="155dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHomeSearch">
-
-        <RadioButton
-            android:id="@+id/radUPC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="UPC"
-            android:textColorHighlight="#00000000"
-            android:textColorLink="#000000"
-            android:textCursorDrawable="@color/colorAccent" />
-
-        <RadioButton
-            android:id="@+id/radProductType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product type"
-            android:textColorHighlight="#00000000"
-            android:textColorHint="#00000000"
-            android:textColorLink="#00000000"
-            android:textCursorDrawable="@color/colorAccent" />
-    </RadioGroup>
-
     <Button
         android:id="@+id/btnHomeSearch"
         style="@android:style/Widget.Button"
@@ -52,18 +21,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <MultiAutoCompleteTextView
+    <Button
+        android:id="@+id/btnSearch"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="388dp"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSearch" />
+
+    <TextView
+        android:id="@+id/txtSearchPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="30dp"
+        android:text="Enter a product:"
+        app:layout_constraintBottom_toTopOf="@+id/txtSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
         android:id="@+id/txtSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="107dp"
-        android:width="210dp"
-        android:background="#FDFBFB"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="15dp"
+        android:background="#FFFFFF"
+        android:ems="10"
         android:text=" "
+        app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSearchPrompt" />
+
+    <TextView
+        android:id="@+id/txtOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="303dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

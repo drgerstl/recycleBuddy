@@ -18,11 +18,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -123,6 +121,9 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         file = Uri.fromFile(getOutputMediaFile());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
         startActivityForResult(intent, 100);
+//
+//        Intent searchIntent = new Intent(ScanActivity.this, SearchActivity.class);
+//        startActivity(searchIntent);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -132,6 +133,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             try {
                 Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(), file);
                 barcodeDetector(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -157,7 +159,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
         /*** Local Variables ***/
 
-        String upc = "";
+        String strUpc = "";
 
         BarcodeDetector detector = new BarcodeDetector.Builder(getApplicationContext())
                         .setBarcodeFormats(Barcode.UPC_A | Barcode.UPC_E).build();
@@ -176,10 +178,9 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             }
             else {
                 Barcode thisCode = barcodes.valueAt(0);
-                upc = thisCode.rawValue;
+                strUpc = thisCode.rawValue;
             }
         }
-        System.out.println("yayaayayayaya " + upc);
-        return upc;
+        return strUpc;
     }
 }
