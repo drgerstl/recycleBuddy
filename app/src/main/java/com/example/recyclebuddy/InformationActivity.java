@@ -78,3 +78,4 @@ public class InformationActivity  extends AppCompatActivity implements View.OnCl
         txtInformation.requestFocus();
     }
 }
+
