@@ -18,4 +18,40 @@
         android:text="Home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSelectImage"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Select image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtUpcOutput"
+        android:layout_width="146dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="530dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="500px"
+        android:layout_marginTop="270dp"
+        android:layout_marginBottom="271dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="205dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
