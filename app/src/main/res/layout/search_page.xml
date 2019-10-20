@@ -60,10 +60,9 @@
         android:layout_marginEnd="110dp"
         android:layout_marginBottom="15dp"
         android:background="#FFFFFF"
-        android:ems="10"
-        android:text=" "
-        android:lines="1"
         android:completionThreshold="1"
+        android:ems="10"
+        android:lines="1"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,8 +70,8 @@
 
     <TextView
         android:id="@+id/txtOutput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="212dp"
+        android:layout_height="284dp"
         android:layout_marginStart="166dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="242dp"
@@ -80,7 +79,9 @@
         android:text=" "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch"
+        app:layout_constraintVertical_bias="0.100000024" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
